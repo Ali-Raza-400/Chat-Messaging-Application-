@@ -1,12 +1,14 @@
+/* eslint-disable */
 // import InputField from "@/components/core/Input";
 // import MuiTypography from "@/components/core/Typography";
 // import useScreenWidth from "@/hooks/useScreenWidth";
 // import { Search } from "@mui/icons-material";
 import { Avatar, InputAdornment,Box, TextField, Typography } from "@mui/material";
-import moment from "moment";
+// import moment from "moment";
 import styled from "styled-components";
 import useScreenWidth from "../../../hooks/useScreen";
 import SearchIcon from '@mui/icons-material/Search';
+import { useSelector } from "react-redux";
 
 const StyledUserContainer = styled(Box)`
   display: ${(props) =>
@@ -24,8 +26,8 @@ export default function ChatList({
   setSelectedInbox,
   selectedInbox,
 }) {
-  console.log("selectedInbox::::", selectedInbox);
   const screenWidth = useScreenWidth();
+  const { userInfo } = useSelector((state) => state.auth);
   const INPUT_FIELD_PROPS_SEARCH = {
     label: "",
     fullWidth: true,
@@ -84,7 +86,7 @@ export default function ChatList({
           }
         />
       </Box>
-      {selectedInbox ? (
+      {/* {selectedInbox ? ( */}
         <Box style={{ overflow: "auto", height: `calc(100vh - 188px)` }}>
           {USER_LIST.map((item, index) => {
             return (
@@ -98,7 +100,7 @@ export default function ChatList({
             );
           })}
         </Box>
-      ) : (
+      {/* ) : (
         <Box
           sx={{
             display: "flex",
@@ -128,7 +130,7 @@ export default function ChatList({
             </p>
           </Box>
         </Box>
-      )}
+      )} */}
     </StyledUserContainer>
   );
 }
@@ -163,15 +165,15 @@ const MessangerUserListItem = ({
       <Avatar
         sx={{ height: "50px", width: "50px", mr: 1 }}
         alt="Remy Sharp"
-        src={item?.profilePicture}
+        src={"item?.profilePicture"}
       />
       <Box display="flex" ml="5px">
         <div style={{ flex: 1 }}>
           <Typography variant="body1" component="h6" fontWeight="500">
-            {item?.name}
+            {"item?.name"}
           </Typography>
           <Typography variant="subtitle1" component="p" fontWeight="400">
-            {item?.lastMsg}
+            {"item?.lastMsg"}
           </Typography>
         </div>
         <div>
@@ -181,8 +183,8 @@ const MessangerUserListItem = ({
             fontWeight="400"
             color="#9C9C9C"
             sx={{ fontSize: "12px" }}
-          >
-            {moment.utc(item?.time).local().format("LT")}
+          >test
+            {/* {moment.utc(item?.time).local().format("LT")} */}
           </Typography>
         </div>
       </Box>
